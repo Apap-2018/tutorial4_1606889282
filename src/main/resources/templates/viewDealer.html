@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>View Dealer</title>
+</head>
+
+<body>
+	<h3 th:text="'Alamat: ' + ${dealer.alamat}"></h3>
+	<h3 th:text="'Telepon: ' + ${dealer.noTelp}"></h3>
+	<td><a th:href="@{'/car/add/'+ ${dealerId}}">Add car</a></td>
+	<td><a th:href="@{/dealer/delete/{id}(id=${dealerId})}">Delete Dealer</a></td>
+	<td><a th:href="@{/dealer/update/}+${dealer.id}">Update Dealer</a></td>
+
+	<h3>List Mobil</h3>
+	<div th:each="car : ${listCar}">
+		<h3 th:text= "'Brand = ' +${car.brand}"></h3>
+		<h3 th:text= "'Type = ' +${car.type}"></h3>
+		<h3 th:text= "'Price = ' +${car.price}"></h3>
+		<h3 th:text= "'Amount = ' +${car.amount}"></h3>
+		<td><a th:href="@{/car/delete/{id}(id=${car.id})}">Delete Car</a></td>					
+		<td><a th:href="@{/car/update/}+${car.id}">Update data Mobil</a></td>
+
+	</div>
+</body>
+</html>
